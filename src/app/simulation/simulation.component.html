@@ -1,0 +1,24 @@
+<div *ngIf="questions">
+    
+    <b>Question:</b><br>
+    <i>{{questions[index].questionText}}</i><br><br>
+    
+    <b>Options:</b><br><br>
+    <div *ngFor="let item of questions[index].answers">
+        <div class="form-check">
+            &nbsp;&nbsp;
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" value="">
+                    <i> {{item.optionText}} </i>
+            </label>
+        </div>
+    </div><br>
+    
+    <b>Explanation:</b><br>
+    <i>{{questions[index].answerText}}</i><br><br>
+    
+    <button type="submit" class="btn btn-sm btn-primary" (click)="index = index - 1;" *ngIf="!(index == 0)"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Back </button>
+    <button type="submit" class="btn btn-sm btn-primary" (click)="index = index + 1;" *ngIf="!(index == (questions.length-1))">Next <i class="fa fa-chevron-right" aria-hidden="true"></i>
+ </button>
+
+</div>

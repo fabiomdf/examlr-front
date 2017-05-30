@@ -1,0 +1,19 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1>New Group</h1>
+        <form>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <input type="text" class="form-control form-control-lg" placeholder="Name" #groupName>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <textarea class="form-control form-control-lg" rows="3" placeholder="About" #groupAbout></textarea>
+                </div>
+            </div>
+        </form>
+        <p><a class="btn btn-primary btn-lg" href="javascript:void(0)" role="button" (click)="newGroup(groupName.value, groupAbout.value); groupName.value = ''; groupAbout.value = '';">Submit</a></p>
+
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-3"> Examlr </h1>
+        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron
+            and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
+        <p><a class="btn btn-primary btn-lg" href="javascript:void(0)" role="button" routerLink="/group/new">Create New Group</a></p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <h1>Top Groups</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-4" *ngFor="let item of groups">
+            <h2>{{item.name}}</h2>
+            <p>{{item.about}}</p>
+            <p><a class="btn btn-secondary" routerLink="/group/{{item.id}}" role="button">Start Learning &raquo;</a></p>
+        </div>
+    </div>
+</div>

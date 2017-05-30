@@ -1,0 +1,24 @@
+<form>
+    <div class="form-group">
+        <label for="exampleSelect1">Category</label>
+        <select class="form-control" [(ngModel)]="selectedCategory" name="formCategory">
+            <option *ngFor="let item of categories" [ngValue]="item">
+                {{item.name}}
+            </option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleTextarea">Question Text</label>
+        <textarea class="form-control" rows="3" #formQuestionText></textarea>
+    </div>
+    <div class="form-group">
+        <label for="exampleTextarea">Answer Text</label>
+        <textarea class="form-control" rows="3" #formAnswerText></textarea>
+    </div>
+    <div *ngIf="!question">
+        <button type="submit" class="btn btn-primary" (click)="newQuestion(formQuestionText.value, formAnswerText.value, selectedCategory);">Submit</button>
+    </div>
+</form>
+<div *ngIf="question">
+    <answernew-component [(selectedQuestion)]="question"></answernew-component>
+</div>

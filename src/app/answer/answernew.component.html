@@ -1,0 +1,28 @@
+<br>
+<h4>New Answers</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Answer Text</th>
+            <th>Correct</th>
+            <th>Option</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of answers; let i = index">
+            <th scope="row">{{i}}</th>
+            <td>{{item.optionText}}</td>
+            <td>{{item.correctAnswer}}</td>
+            <td>
+                <button type="submit" class="btn btn-danger btn-sm" (click)="delAnswer(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Add answer:</th>
+            <td><input type="text" class="form-control" placeholder="Option" #answerOptionText></td>
+            <td><input type="checkbox" class="form-control" #answerCorrectAnswer></td>
+            <td><button type="submit" class="btn btn-primary" (click)="newAnswer(answerOptionText.value, answerCorrectAnswer.checked, question.id); answerOptionText.value = '';">Submit</button></td>
+        </tr>
+    </tbody>
+</table>
