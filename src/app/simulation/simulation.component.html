@@ -1,24 +1,24 @@
 <div *ngIf="questions">
-    
+
     <b>Question:</b><br>
-    <i>{{questions[index].questionText}}</i><br><br>
-    
+    <i>{{questionsSimulate[qindex].questionText}}</i><br><br>
+
     <b>Options:</b><br><br>
-    <div *ngFor="let item of questions[index].answers">
+    <div *ngFor="let item of questionsSimulate[qindex].answers; let aindex = index">
         <div class="form-check">
             &nbsp;&nbsp;
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" value="">
+                <input #answerCorrectAnswer class="form-check-input" type="checkbox" value="" [checked]="item.correctAnswer" (click)="setAnswerCheck(qindex, aindex, answerCorrectAnswer.checked);" >
                     <i> {{item.optionText}} </i>
             </label>
         </div>
     </div><br>
-    
+
     <b>Explanation:</b><br>
-    <i>{{questions[index].answerText}}</i><br><br>
-    
-    <button type="submit" class="btn btn-sm btn-primary" (click)="index = index - 1;" *ngIf="!(index == 0)"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Back </button>
-    <button type="submit" class="btn btn-sm btn-primary" (click)="index = index + 1;" *ngIf="!(index == (questions.length-1))">Next <i class="fa fa-chevron-right" aria-hidden="true"></i>
- </button>
+    <i>{{questionsSimulate[qindex].answerText}}</i><br><br>
+
+    <button type="submit" class="btn btn-sm btn-primary" (click)="qindex = qindex - 1;" *ngIf="!(qindex == 0)"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Back </button>
+    <button type="submit" class="btn btn-sm btn-primary" (click)="qindex = qindex + 1;" *ngIf="!(qindex == (questionsSimulate.length-1))">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+    <button type="submit" class="btn btn-sm btn-success" (click)="finishSimulation();" *ngIf="(qindex == (questionsSimulate.length-1))">Finish <i class="fa fa-check" aria-hidden="true"></i></button>
 
 </div>
