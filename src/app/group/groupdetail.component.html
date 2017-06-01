@@ -2,7 +2,8 @@
     <div class="container">
         <h1 class="display-5"> {{group.name}} </h1>
         <p>{{group.about}}</p>
-        <label for="exampleSelect1"><button class="btn btn-lg btn-outline-success" (click)="openNewSimulation(contentNewSimulation)" >Start Simulation</button></label>
+        <!--label for="exampleSelect1"><button class="btn btn-lg btn-outline-success" (click)="openNewSimulation(contentNewSimulation)" >Start Simulation</button></label-->
+        <a href="javascript:void(0);" routerLink="/group/{{group.id}}/simulation"> Start Simulation</a>
     </div>
 </div>
 <div class="container">

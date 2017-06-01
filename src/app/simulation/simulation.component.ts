@@ -1,3 +1,6 @@
+import 'rxjs/add/operator/switchMap';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Group } from "../group/group";
@@ -17,20 +20,23 @@ export class SimulationComponent implements OnInit {
     questionsSimulate: Array<any>;
     group: Group;
     simulationResults: Array<boolean>;
-
+/*
     @Input()
     set selectedGroup(_group: Group) {
         if (_group) {
             this.group = _group;
-            this.getQuestionsByGroupId();
+            //this.getQuestionsByGroupId();
         }
     }
+*/
+    constructor(
+        private questionService: QuestionService,
+        private route: ActivatedRoute,
+        private location: Location) { }
 
-    constructor(private questionService: QuestionService) { }
-
-    getQuestionsByGroupId(): void {
+    getQuestionsByGroupId(groupId: string): void {
         this.questionService
-            .getQuestionsByGroupId(this.group.id)
+            .getQuestionsByGroupId(groupId)
             .then(result => {
                 this.questions = result;
                 this.setAnswersClear(result);
@@ -63,5 +69,9 @@ export class SimulationComponent implements OnInit {
 
     ngOnInit() {
         this.qindex = 0;
+
+        this.route.params.subscribe(params => {
+            this.getQuestionsByGroupId(params['id']);
+        });
     }
 }
