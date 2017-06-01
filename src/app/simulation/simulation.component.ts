@@ -16,11 +16,12 @@ export class SimulationComponent implements OnInit {
     questions: Array<any>;
     questionsSimulate: Array<any>;
     group: Group;
+    simulationResults: Array<boolean>;
 
     @Input()
-    set selectedGroup(group: Group) {
-        if (group) {
-            this.group = group;
+    set selectedGroup(_group: Group) {
+        if (_group) {
+            this.group = _group;
             this.getQuestionsByGroupId();
         }
     }
@@ -52,15 +53,12 @@ export class SimulationComponent implements OnInit {
     }
 
     finishSimulation(): void {
+        this.simulationResults = Array<boolean>();
+
         let i = 0;
-        this.questions.forEach(element => {
-            if (JSON.stringify(element) == JSON.stringify(this.questionsSimulate[i])) {
-                console.log(`Pregunta: ${i} está Correta`);
-            } else {
-                console.log(`Pregunta: ${i} está Errada`);
-            }
-            i++;
-        });
+        for (let q of this.questions) {
+            this.simulationResults[i] = (JSON.stringify(q) == JSON.stringify(this.questionsSimulate[i])) ? true : false; i++;
+        }
     }
 
     ngOnInit() {
