@@ -85,6 +85,15 @@ export class QuestionListComponent implements OnInit {
         });
     }
 
+    openDetailQuestion(content) {
+        let options: NgbModalOptions = { size: 'lg' };
+        this.modalService.open(content, options).result.then((result) => {
+            this.getQuestionsByCategory();
+        }, (reason) => {
+            this.getQuestionsByCategory();
+        });
+    }
+
     delQuestion(question: Question) {
         this.questionService.delQuestion(question.id).then(() => {
             this.questions = this.questions.filter(q => q !== question);

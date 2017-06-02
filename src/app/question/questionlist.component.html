@@ -11,7 +11,7 @@
         </form>
     </div>
     <div class="col-md-2">
-        <button class="btn btn-md btn-outline-default btn-block" (click)="openNewCategory(contentNewCategory)"> <i class="fa fa-plus" aria-hidden="true"></i> Category</button>
+        <button class="btn btn-md btn-outline-primary btn-block" (click)="openNewCategory(contentNewCategory)"> <i class="fa fa-plus" aria-hidden="true"></i> Category</button>
     </div>
 </div>
 <div *ngIf="selectedCategory">
@@ -20,7 +20,7 @@
             <h4>&nbsp;Questions List</h4>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-md btn-outline-default btn-block" (click)="openNewQuestion(contentNewQuestion)"> <i class="fa fa-plus" aria-hidden="true"></i> Question</button>
+            <button class="btn btn-md btn-outline-primary btn-block" (click)="openNewQuestion(contentNewQuestion)"> <i class="fa fa-plus" aria-hidden="true"></i> Question</button>
         </div>
     </div>
     <div class="row">
@@ -29,10 +29,10 @@
                 <thead>
                     <tr>
                         <th width="10%">#</th>
-                        <th width="70%">Question Text</th>
+                        <th width="75%">Question Text</th>
                         <!--th>Answer Text</th-->
-                        <th width="10%">Rating</th>
-                        <th width="10%">Option</th>
+                        <!--th width="10%">Rating</th-->
+                        <th width="15%" style="text-align: center">Option</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,12 +40,12 @@
                         <th scope="row">{{i}}</th>
                         <td>{{item.questionText}}</td>
                         <!--td>{{item.answerText}}</td-->
+                        <!--td>
+                            <button type="submit" class="btn btn-outline-primary btn-sm btn-block" (click)="setUpVote(item.id)"><i class="fa fa-thumbs-o-up"></i> {{item.upVote}}</button>
+                            <button type="submit" class="btn btn-outline-danger btn-sm btn-block" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
+                        </td-->
                         <td>
-                            <button type="submit" class="btn btn-primary btn-sm btn-block" (click)="setUpVote(item.id)"><i class="fa fa-thumbs-o-up"></i> {{item.upVote}}</button>
-                            <button type="submit" class="btn btn-secondary btn-sm btn-block" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
-                        </td>
-                        <td>
-                            <button type="submit" class="btn btn-danger btn-sm btn-block" (click)="delQuestion(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-secondary btn-md btn-block" (click)="openDetailQuestion(contentDetailQuestion)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -66,6 +66,15 @@
 
     <div class="modal-body">
         <questionnew-component [(selectedGroup)]="group"></questionnew-component>
+    </div>
+
+</ng-template>
+
+
+<ng-template #contentDetailQuestion let-c="close" let-d="dismiss">
+
+    <div class="modal-body">
+        <questiondetail-component></questiondetail-component>
     </div>
 
 </ng-template>

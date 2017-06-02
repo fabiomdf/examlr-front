@@ -18,6 +18,7 @@ import { CategoryService } from "./category/category.service";
 
 import { QuestionListComponent } from "./question/questionlist.component";
 import { QuestionNewComponent } from "./question/questionnew.component";
+import { QuestionDetailComponent } from "./question/questiondetail.component";
 import { QuestionService } from "./question/question.service";
 
 import { AnswerNewComponent } from "./answer/answernew.component";
@@ -34,6 +35,7 @@ import { SimulationComponent } from "./simulation/simulation.component";
     CategoryNewComponent,
     QuestionListComponent,
     QuestionNewComponent,
+    QuestionDetailComponent,
     AnswerNewComponent,
     SimulationComponent
   ],
