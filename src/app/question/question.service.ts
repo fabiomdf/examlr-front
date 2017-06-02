@@ -21,10 +21,10 @@ export class QuestionService {
             .catch(this.handleError);
     }
 
-    getQuestionsByCategoryId(categoryId: string): Promise<Question[]> {
-        return this.http.get(this.url + "/Categories/" + categoryId + "/questions")
+    getQuestionsByCategoryId(categoryId: string): Promise<any[]> {
+        return this.http.get(this.url + "/Categories/" + categoryId + "/questions?filter[include]=answers")
             .toPromise()
-            .then(res => res.json() as Question[])
+            .then(res => res.json() as any[])
             .catch(this.handleError);
     }
 
@@ -41,6 +41,20 @@ export class QuestionService {
                     }
                 }
                 return this.shuffleArray(result);
+            })
+            .catch(this.handleError);
+    }
+
+    /**
+     * Get the Question Details and the corresponding Answers using Question Id
+     */
+    getQAByQuestionId(questionId: string): Promise<any> {
+        let url = `${this.url}/questions?filter[include]=answers&filter[where][id]=${questionId}`;
+        return this.http.get(url)
+            .toPromise()
+            .then(res => {
+                let result = res.json() as any;
+                return result[0];
             })
             .catch(this.handleError);
     }

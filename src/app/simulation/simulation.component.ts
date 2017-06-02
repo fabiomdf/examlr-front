@@ -1,7 +1,9 @@
 import 'rxjs/add/operator/switchMap';
-import { ActivatedRoute, Params } from '@angular/router';
+
 import { Location } from '@angular/common';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
 import { Group } from "../group/group";
 import { GroupService } from "../group/group.service";
@@ -21,12 +23,14 @@ export class SimulationComponent implements OnInit {
     questionsSimulate: Array<any>;
     simulationResults: Array<boolean>;
     group: Group;
+    selectedQuestionIndex: number;
 
     constructor(
         private groupService: GroupService,
         private questionService: QuestionService,
         private route: ActivatedRoute,
-        private location: Location) { }
+        private location: Location,
+        private modalService: NgbModal) { }
 
     getQuestionsByGroupId(groupId: string): void {
         this.questionService
@@ -56,6 +60,12 @@ export class SimulationComponent implements OnInit {
 
     setAnswerCheck(qindex: number, aindex: number, itemChecked: boolean): void {
         this.questionsSimulate[qindex].answers[aindex].correctAnswer = itemChecked;
+    }
+
+    openDetailQuestion(content) {
+        
+        let options: NgbModalOptions = { size: 'lg' };
+        this.modalService.open(content, options).result;
     }
 
     /**

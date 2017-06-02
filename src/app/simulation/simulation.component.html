@@ -14,14 +14,11 @@
                 <div class="form-check">
                     &nbsp;&nbsp;
                     <label class="form-check-label">
-                <input #answerCorrectAnswer class="form-check-input" type="checkbox" value="" [checked]="item.correctAnswer" (click)="setAnswerCheck(qindex, aindex, answerCorrectAnswer.checked);" >
-                    <i> {{item.optionText}} </i>
-            </label>
+                        <input #answerCorrectAnswer class="form-check-input" type="checkbox" value="" [checked]="item.correctAnswer" (click)="setAnswerCheck(qindex, aindex, answerCorrectAnswer.checked);" >
+                        <i> {{item.optionText}} </i>
+                    </label>
                 </div>
             </div><br>
-
-            <!--b>Explanation:</b><br>
-            <i>{{questionsSimulate[qindex].answerText}}</i><br><br-->
 
             <button type="submit" class="btn btn-md btn-primary" (click)="qindex = qindex - 1;" *ngIf="!(qindex == 0)"> <i class="fa fa-chevron-left" aria-hidden="true"></i> Back </button>
             <button type="submit" class="btn btn-md btn-primary" (click)="qindex = qindex + 1;" *ngIf="!(qindex == (questionsSimulate.length-1))">Next <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
@@ -39,9 +36,22 @@
     <div class="row">
         <div class="col-md-3" *ngFor="let item of simulationResults; let i = index">
             <div>
-                <p *ngIf="item" style="color:green">Question: {{i}} Correct</p>
-                <p *ngIf="!item" style="color:red">Question: {{i}} Incorrect</p>
+                <p *ngIf="item" style="color:green">
+                    Question: {{i}} Correct
+                </p>
+                <p *ngIf="!item" style="color:red">
+                    Question: {{i}} Incorrect
+                </p>
+                <a href="javascript:void(0);" (click)="selectedQuestionIndex = i; openDetailQuestion(contentDetailQuestion)"> view </a>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #contentDetailQuestion let-c="close" let-d="dismiss">
+
+    <div class="modal-body">
+        <questiondetail-component [(selectedQuestionIndex)]="selectedQuestionIndex" [(questionsToShow)]="questionsSimulate" [(setQuestionsToCompare)]="questions" ></questiondetail-component>
+    </div>
+
+</ng-template>

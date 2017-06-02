@@ -1,1 +1,28 @@
-Question Details
+<div class="container" *ngIf="questions">
+    <div class="row">
+        <div class="col-md-12">
+            <b>Question:</b><br>
+            <i>{{questions[questionIndex].questionText}}</i><br><br>
+
+            <b>Options:</b><br><br>
+            <div *ngFor="let item of questions[questionIndex].answers; let i = index">
+                <div class="form-check">
+                    &nbsp;&nbsp;
+                    <label class="form-check-label">
+                        <input #answerCorrectAnswer class="form-check-input" type="checkbox" value="" [checked]="item.correctAnswer">
+                        <i> {{item.optionText}} </i>
+                    </label>
+                </div>
+            </div><br>
+            <div *ngIf="questionsToCompare" style="color:green">
+                <b>Correct Answer(s):&nbsp;
+                <div *ngFor="let item of questionsToCompare[questionIndex].answers; let i = index">
+                    <div *ngIf="item.correctAnswer == true"> {{item.optionText}}; </div>
+                </div>
+                </b>
+            </div><br>
+            <b>Tips:</b><br>
+            <i>{{questions[questionIndex].answerText}}</i>
+        </div>
+    </div>
+</div>

@@ -45,7 +45,7 @@
                             <button type="submit" class="btn btn-outline-danger btn-sm btn-block" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
                         </td-->
                         <td>
-                            <button type="submit" class="btn btn-secondary btn-md btn-block" (click)="openDetailQuestion(contentDetailQuestion)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-secondary btn-md btn-block" (click)="selectedQuestionIndex = i; openDetailQuestion(contentDetailQuestion)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -70,11 +70,10 @@
 
 </ng-template>
 
-
 <ng-template #contentDetailQuestion let-c="close" let-d="dismiss">
 
     <div class="modal-body">
-        <questiondetail-component></questiondetail-component>
+        <questiondetail-component [(selectedQuestionIndex)]="selectedQuestionIndex" [(questionsToShow)]="questions"></questiondetail-component>
     </div>
 
 </ng-template>

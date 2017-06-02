@@ -20,8 +20,9 @@ export class QuestionListComponent implements OnInit {
     closeResult: string;
     group: Group;
     categories: Category[];
-    questions: Question[];
+    questions: any[];
     selectedCategory: Category;
+    selectedQuestionIndex: number;
 
     @Input()
     set selectedGroup(group: Group) {
