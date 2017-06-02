@@ -1,39 +1,58 @@
-<form>
-    <div class="form-group">
-        <label for="exampleSelect1"><button class="btn btn-sm btn-outline-default" (click)="openNewCategory(contentNewCategory)">Add Category</button></label>
-        <select class="form-control" [(ngModel)]="selectedCategory" name="formCategory" (ngModelChange)="getQuestionsByCategory()">
-            <option *ngFor="let item of categories" [ngValue]="item">
-                {{item.name}}
-            </option>
-        </select>
+<div class="row">
+    <div class="col-md-10">
+        <form>
+            <div class="form-group">
+                <select class="form-control" [(ngModel)]="selectedCategory" name="formCategory" (ngModelChange)="getQuestionsByCategory()">
+                    <option *ngFor="let item of categories" [ngValue]="item">
+                        {{item.name}}
+                    </option>
+                </select>
+            </div>
+        </form>
     </div>
-</form>
-<label for="exampleSelect2"><button class="btn btn-sm btn-outline-default" (click)="openNewQuestion(contentNewQuestion)" *ngIf="selectedCategory" >Add Question</button></label>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>#</th>
-            <th>Question Text</th>
-            <th>Answer Text</th>
-            <th>Rating</th>
-            <th>Option</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of questions; let i = index">
-            <th scope="row">{{i}}</th>
-            <td>{{item.questionText}}</td>
-            <td>{{item.answerText}}</td>
-            <td>
-                <button type="submit" class="btn btn-primary btn-sm" (click)="setUpVote(item.id)"><i class="fa fa-thumbs-o-up"></i> {{item.upVote}}</button>
-                <button type="submit" class="btn btn-secondary btn-sm" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
-            </td>
-            <td>
-                <button type="submit" class="btn btn-danger btn-sm" (click)="delQuestion(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+    <div class="col-md-2">
+        <button class="btn btn-md btn-outline-default btn-block" (click)="openNewCategory(contentNewCategory)"> <i class="fa fa-plus" aria-hidden="true"></i> Category</button>
+    </div>
+</div>
+<div *ngIf="selectedCategory">
+    <div class="row" style="padding-bottom:10px;">
+        <div class="col-md-10">
+            <h4>&nbsp;Questions List</h4>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-md btn-outline-default btn-block" (click)="openNewQuestion(contentNewQuestion)"> <i class="fa fa-plus" aria-hidden="true"></i> Question</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th width="10%">#</th>
+                        <th width="70%">Question Text</th>
+                        <!--th>Answer Text</th-->
+                        <th width="10%">Rating</th>
+                        <th width="10%">Option</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of questions; let i = index">
+                        <th scope="row">{{i}}</th>
+                        <td>{{item.questionText}}</td>
+                        <!--td>{{item.answerText}}</td-->
+                        <td>
+                            <button type="submit" class="btn btn-primary btn-sm btn-block" (click)="setUpVote(item.id)"><i class="fa fa-thumbs-o-up"></i> {{item.upVote}}</button>
+                            <button type="submit" class="btn btn-secondary btn-sm btn-block" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-danger btn-sm btn-block" (click)="delQuestion(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 <ng-template #contentNewCategory let-c="close" let-d="dismiss">
 

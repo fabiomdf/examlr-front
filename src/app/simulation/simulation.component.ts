@@ -4,6 +4,7 @@ import { Location } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Group } from "../group/group";
+import { GroupService } from "../group/group.service";
 import { Question } from "../question/question";
 import { QuestionService } from "../question/question.service";
 import { Answer } from "../answer/answer";
@@ -18,18 +19,11 @@ export class SimulationComponent implements OnInit {
     qindex: number;
     questions: Array<any>;
     questionsSimulate: Array<any>;
-    group: Group;
     simulationResults: Array<boolean>;
-/*
-    @Input()
-    set selectedGroup(_group: Group) {
-        if (_group) {
-            this.group = _group;
-            //this.getQuestionsByGroupId();
-        }
-    }
-*/
+    group: Group;
+
     constructor(
+        private groupService: GroupService,
         private questionService: QuestionService,
         private route: ActivatedRoute,
         private location: Location) { }
@@ -41,6 +35,12 @@ export class SimulationComponent implements OnInit {
                 this.questions = result;
                 this.setAnswersClear(result);
             });
+    }
+
+    getGroupById(groupId): void {
+        this.groupService
+            .getGroupById(groupId)
+            .then(result => this.group = result);
     }
 
     setAnswersClear(questions: Array<any>): void {
@@ -58,6 +58,9 @@ export class SimulationComponent implements OnInit {
         this.questionsSimulate[qindex].answers[aindex].correctAnswer = itemChecked;
     }
 
+    /**
+     * Compare the real questions / answers and the user questions / answers
+     */
     finishSimulation(): void {
         this.simulationResults = Array<boolean>();
 
@@ -71,6 +74,7 @@ export class SimulationComponent implements OnInit {
         this.qindex = 0;
 
         this.route.params.subscribe(params => {
+            this.getGroupById(params['id']);
             this.getQuestionsByGroupId(params['id']);
         });
     }

@@ -2,39 +2,13 @@
     <div class="container">
         <h1 class="display-5"> {{group.name}} </h1>
         <p>{{group.about}}</p>
-        <!--label for="exampleSelect1"><button class="btn btn-lg btn-outline-success" (click)="openNewSimulation(contentNewSimulation)" >Start Simulation</button></label-->
-        <a href="javascript:void(0);" routerLink="/group/{{group.id}}/simulation"> Start Simulation</a>
+        <button class="btn btn-lg btn-outline-success" routerLink="/group/{{group.id}}/simulation"> <i class="fa fa-play" aria-hidden="true"></i> Start Simulation</button>
     </div>
 </div>
 <div class="container">
     <div class="row">
         <div class="col-md-12" *ngIf="group.id">
             <questionlist-component [(selectedGroup)]="group"></questionlist-component>
-            <!--ngb-tabset>
-                <ngb-tab title="Questions">
-                    <ng-template ngbTabContent>
-                        
-                    </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Forum">
-                    <ng-template ngbTabContent>
-                        Micro Forum
-                    </ng-template>
-                </ngb-tab>
-                <ngb-tab title="Simulation">
-                    <ng-template ngbTabContent>
-                        Simulation Component
-                    </ng-template>
-                </ngb-tab>
-            </ngb-tabset-->
         </div>
     </div>
 </div>
-
-<ng-template #contentNewSimulation let-c="close" let-d="dismiss">
-
-    <div class="modal-body">
-        <simulation-component [(selectedGroup)]="group"></simulation-component>
-    </div>
-
-</ng-template>

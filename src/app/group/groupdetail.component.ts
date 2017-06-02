@@ -23,12 +23,6 @@ export class GroupDetailComponent implements OnInit {
         private modalService: NgbModal
     ) { }
 
-    openNewSimulation(content) {
-        let options: NgbModalOptions = { size: 'lg' };
-        this.modalService.open(content, options);
-    }
-
-
     ngOnInit() {
         this.group = new Group;
 
