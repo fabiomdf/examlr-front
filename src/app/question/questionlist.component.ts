@@ -52,22 +52,6 @@ export class QuestionListComponent implements OnInit {
             .then(result => this.questions = result);
     }
 
-    setUpVote(questionId: string): void {
-        var retorno = new Question();
-        this.questionService.setUpVote(questionId).then(result => {
-            retorno = result;
-            this.getQuestionsByCategory();
-        });
-    }
-
-    setDownVote(questionId: string): void {
-        var retorno = new Question();
-        this.questionService.setDownVote(questionId).then(result => {
-            retorno = result;
-            this.getQuestionsByCategory();
-        });
-    }
-
     openNewCategory(content) {
         let options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result.then((result) => {

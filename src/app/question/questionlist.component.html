@@ -29,23 +29,23 @@
                 <thead>
                     <tr>
                         <th width="10%">#</th>
-                        <th width="75%">Question Text</th>
-                        <!--th>Answer Text</th-->
-                        <!--th width="10%">Rating</th-->
-                        <th width="15%" style="text-align: center">Option</th>
+                        <th width="70%">Question Text</th>
+                        <th width="10%" style="text-align: center">Rating</th>
+                        <th width="10%" style="text-align: center">Option</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let item of questions; let i = index">
                         <th scope="row">{{i}}</th>
                         <td>{{item.questionText}}</td>
-                        <!--td>{{item.answerText}}</td-->
-                        <!--td>
-                            <button type="submit" class="btn btn-outline-primary btn-sm btn-block" (click)="setUpVote(item.id)"><i class="fa fa-thumbs-o-up"></i> {{item.upVote}}</button>
-                            <button type="submit" class="btn btn-outline-danger btn-sm btn-block" (click)="setDownVote(item.id)"><i class="fa fa-thumbs-o-down"></i> {{item.downVote}}</button>
-                        </td-->
+                        <td style="text-align: center">{{((item.upVote / item.downVote) * 100).toFixed(2)}}</td>
                         <td>
-                            <button type="submit" class="btn btn-secondary btn-md btn-block" (click)="selectedQuestionIndex = i; openDetailQuestion(contentDetailQuestion)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                            <button type="submit" class="btn btn-primary btn-md btn-block" (click)="selectedQuestionIndex = i; openDetailQuestion(contentDetailQuestion)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="submit" class="btn btn-secondary btn-md btn-block" (click)="delQuestion(item)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
@@ -55,7 +55,12 @@
 </div>
 
 <ng-template #contentNewCategory let-c="close" let-d="dismiss">
-
+    <div class="modal-header">
+        <h4 class="modal-title">Categories</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
     <div class="modal-body">
         <categorynew-component [(selectedGroup)]="group"></categorynew-component>
     </div>
@@ -63,7 +68,12 @@
 </ng-template>
 
 <ng-template #contentNewQuestion let-c="close" let-d="dismiss">
-
+    <div class="modal-header">
+        <h4 class="modal-title">New Question</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
     <div class="modal-body">
         <questionnew-component [(selectedGroup)]="group"></questionnew-component>
     </div>
@@ -71,7 +81,12 @@
 </ng-template>
 
 <ng-template #contentDetailQuestion let-c="close" let-d="dismiss">
-
+    <div class="modal-header">
+        <h4 class="modal-title">Question Detail</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
     <div class="modal-body">
         <questiondetail-component [(selectedQuestionIndex)]="selectedQuestionIndex" [(questionsToShow)]="questions"></questiondetail-component>
     </div>

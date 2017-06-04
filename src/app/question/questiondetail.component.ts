@@ -12,7 +12,7 @@ import { QuestionService } from "./question.service";
     templateUrl: 'questiondetail.component.html'
 })
 export class QuestionDetailComponent implements OnInit {
-    
+
     questions: any;
     questionIndex: number;
     questionsToCompare: any;
@@ -39,6 +39,28 @@ export class QuestionDetailComponent implements OnInit {
         }
     }
 
+    setUpVote(questionId: string): void {
+        var rtrn = new Question();
+        this.questionService.setUpVote(questionId).then(result => {
+            rtrn = result;
+            this.questions[this.questionIndex].upVote++;
+        });
+    }
+
+    setDownVote(questionId: string): void {
+        var rtrn = new Question();
+        this.questionService.setDownVote(questionId).then(result => {
+            rtrn = result;
+            this.questions[this.questionIndex].downVote++;
+        });
+    }
+
+    delQuestion(question: Question) {
+        this.questionService.delQuestion(question.id).then(() => {
+            this.questions = this.questions.filter(q => q !== question);
+        });
+    }
+
     constructor(
         private questionService: QuestionService,
         private route: ActivatedRoute,
@@ -46,6 +68,6 @@ export class QuestionDetailComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        
+
     }
 }

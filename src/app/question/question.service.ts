@@ -99,8 +99,8 @@ export class QuestionService {
                 answerText: answerText,
                 categoryId: categoryId,
                 createdAt: Date.now(),
-                upVote: 0,
-                downVote: 0
+                upVote: 1,
+                downVote: 1
             }),
             { headers: this.headers })
             .toPromise()

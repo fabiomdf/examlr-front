@@ -19,10 +19,23 @@
                 <div *ngFor="let item of questionsToCompare[questionIndex].answers; let i = index">
                     <div *ngIf="item.correctAnswer == true"> {{item.optionText}}; </div>
                 </div>
-                </b>
-            </div><br>
+                </b><br>
+            </div>
             <b>Tips:</b><br>
             <i>{{questions[questionIndex].answerText}}</i>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8"></div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-primary btn-md btn-block" (click)="setUpVote(questions[questionIndex].id)">
+                <i class="fa fa-thumbs-o-up"></i> {{questions[questionIndex].upVote}}
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-outline-danger btn-md btn-block" (click)="setDownVote(questions[questionIndex].id)">
+                <i class="fa fa-thumbs-o-down"></i> {{questions[questionIndex].downVote}}
+            </button>
         </div>
     </div>
 </div>
