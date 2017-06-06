@@ -38,6 +38,7 @@ export class SimulationComponent implements OnInit {
             .then(result => {
                 this.questions = result;
                 this.setAnswersClear(result);
+                if (this.questions.length <= 0) { this.location.back(); }
             });
     }
 
@@ -63,7 +64,7 @@ export class SimulationComponent implements OnInit {
     }
 
     openDetailQuestion(content) {
-        
+
         let options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result;
     }
