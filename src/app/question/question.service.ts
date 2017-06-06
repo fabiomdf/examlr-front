@@ -28,7 +28,7 @@ export class QuestionService {
             .catch(this.handleError);
     }
 
-    getQuestionsByGroupId(groupId: string): Promise<any[]> {
+    getQuestionsByGroupId(groupId: string, random = true): Promise<any[]> {
         const url = `${this.url}/Categories?filter[include][questions][answers]&filter[where][groupId]=${groupId}`;
         return this.http.get(url)
             .toPromise()
@@ -37,10 +37,14 @@ export class QuestionService {
                 var result = new Array<any>();
                 for (let c of categories) {
                     for (let q of c.questions) {
-                        result.push(q);
+                        var question: any = {}
+                        question = q;
+                        question.categoryName = c.name;
+
+                        result.push(question);
                     }
                 }
-                return this.shuffleArray(result);
+                if (random) { return this.shuffleArray(result); } else { return result; };
             })
             .catch(this.handleError);
     }

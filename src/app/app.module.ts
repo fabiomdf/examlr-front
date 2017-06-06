@@ -14,6 +14,7 @@ import { GroupDetailComponent } from "./group/groupdetail.component";
 import { GroupService } from "./group/group.service";
 
 import { CategoryNewComponent } from "./category/categorynew.component";
+import { CategorySelectComponent } from "./category/categoryselect.component";
 import { CategoryService } from "./category/category.service";
 
 import { QuestionListComponent } from "./question/questionlist.component";
@@ -33,6 +34,7 @@ import { SimulationComponent } from "./simulation/simulation.component";
     GroupNewComponent,
     GroupDetailComponent,
     CategoryNewComponent,
+    CategorySelectComponent,
     QuestionListComponent,
     QuestionNewComponent,
     QuestionDetailComponent,

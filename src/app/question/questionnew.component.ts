@@ -37,7 +37,6 @@ export class QuestionNewComponent implements OnInit {
     ) { }
 
     newQuestion(questionText: string, answerText: string, category: Category): void {
-        
         questionText = questionText.trim();
         answerText = answerText.trim();
 
@@ -55,7 +54,11 @@ export class QuestionNewComponent implements OnInit {
             .then(result => this.categories = result);
     }
 
+    handleCategorySelected(category) {
+        this.selectedCategory = category;
+    }
+
     ngOnInit() {
-        this.group = new Group();
+
     }
 }

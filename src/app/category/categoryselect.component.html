@@ -1,0 +1,13 @@
+<label for="typeahead-basic">Category:</label>
+<input #categoryNameInput id="typeahead-basic" type="text" class="form-control" [(ngModel)]="categoryModel" [ngbTypeahead]="search"
+  [resultTemplate]="rt" [inputFormatter]="formatter"/>
+<ng-template #rt let-r="result" let-t="term">
+  <div (click)="selectCategory(r)">
+    {{ r.name }}
+  </div>
+</ng-template>
+<p *ngIf="!categoryModel.id && categoryModel.name != ''" style="padding-top: 10px;">
+  <button type="submit" class="btn btn-primary" (click)="newCategory(categoryNameInput.value, group.id)">New Category</button>
+</p>
+<!--hr>
+<pre>Model: {{ categoryModel | json }}</pre-->

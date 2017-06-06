@@ -28,7 +28,7 @@ export class QuestionListComponent implements OnInit {
     set selectedGroup(group: Group) {
         if (group) {
             this.group = group;
-            this.getCategoriesByGroup();
+            this.getQuestionsByGroupId();
         }
     }
 
@@ -40,42 +40,27 @@ export class QuestionListComponent implements OnInit {
         private modalService: NgbModal
     ) { }
 
-    getCategoriesByGroup(): void {
-        this.categoryService
-            .getCategoriesByGroupId(this.group.id)
-            .then(result => this.categories = result);
-    }
-
-    getQuestionsByCategory(): void {
+    getQuestionsByGroupId(): void {
         this.questionService
-            .getQuestionsByCategoryId(this.selectedCategory.id)
+            .getQuestionsByGroupId(this.group.id, false)
             .then(result => this.questions = result);
-    }
-
-    openNewCategory(content) {
-        let options: NgbModalOptions = { size: 'lg' };
-        this.modalService.open(content, options).result.then((result) => {
-            this.getCategoriesByGroup();
-        }, (reason) => {
-            this.getCategoriesByGroup();
-        });
     }
 
     openNewQuestion(content) {
         let options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result.then((result) => {
-            this.getQuestionsByCategory();
+            this.getQuestionsByGroupId();
         }, (reason) => {
-            this.getQuestionsByCategory();
+            this.getQuestionsByGroupId();
         });
     }
 
     openDetailQuestion(content) {
         let options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result.then((result) => {
-            this.getQuestionsByCategory();
+            this.getQuestionsByGroupId();
         }, (reason) => {
-            this.getQuestionsByCategory();
+            this.getQuestionsByGroupId();
         });
     }
 
