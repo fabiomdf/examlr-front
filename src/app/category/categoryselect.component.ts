@@ -23,7 +23,7 @@ export class CategorySelectComponent {
     text$
       .debounceTime(200)
       .distinctUntilChanged()
-      .map(term => term.length < 2 ? []
+      .map(term => term.length < 1 ? []
         : this.categories.filter(c => c.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10));
 
   formatter = (x: { name: string }) => x.name;
@@ -45,8 +45,9 @@ export class CategorySelectComponent {
   ) {
   }
 
-  selectCategory(category): void {
-    this.categorySelected.emit(category);
+  selectItem(item): void {
+    this.categoryModel = item.item;
+    this.categorySelected.emit(this.categoryModel);
   }
 
   getCategoriesByGroup(): void {

@@ -1,8 +1,8 @@
 <label for="typeahead-basic">Category:</label>
 <input #categoryNameInput id="typeahead-basic" type="text" class="form-control" [(ngModel)]="categoryModel" [ngbTypeahead]="search"
-  [resultTemplate]="rt" [inputFormatter]="formatter"/>
+  [resultTemplate]="rt" [inputFormatter]="formatter" (selectItem)="selectItem($event)" />
 <ng-template #rt let-r="result" let-t="term">
-  <div (click)="selectCategory(r)">
+  <div>
     {{ r.name }}
   </div>
 </ng-template>
