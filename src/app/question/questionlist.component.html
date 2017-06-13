@@ -26,7 +26,7 @@
                             <br>
                             <i>* {{item.categoryName}}</i>
                         </td>
-                        <td style="text-align: center">{{(item.upVote / item.downVote).toFixed(2)}}</td>
+                        <td style="text-align: center">{{((item.upVote*100)/(item.upVote + item.downVote)).toFixed(2)}}</td>
                         <td>
                             <button type="submit" class="btn btn-primary btn-md btn-block" (click)="selectedQuestionIndex = i; openDetailQuestion(contentDetailQuestion)">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>

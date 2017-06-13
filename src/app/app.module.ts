@@ -11,6 +11,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { GroupListComponent } from "./group/grouplist.component";
 import { GroupNewComponent } from "./group/groupnew.component";
 import { GroupDetailComponent } from "./group/groupdetail.component";
+import { GroupSearchComponent } from "./group/groupsearch.component";
 import { GroupService } from "./group/group.service";
 
 import { CategoryNewComponent } from "./category/categorynew.component";
@@ -33,6 +34,7 @@ import { SimulationComponent } from "./simulation/simulation.component";
     GroupListComponent,
     GroupNewComponent,
     GroupDetailComponent,
+    GroupSearchComponent,
     CategoryNewComponent,
     CategorySelectComponent,
     QuestionListComponent,

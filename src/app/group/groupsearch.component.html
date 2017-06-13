@@ -1,0 +1,20 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-5"> Results </h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <a href="javascript:void(0);" [routerLink]="['/group/new']">Create a new group</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" *ngFor="let item of groups">
+            <hr>
+            <b><a href="javascript:void(0);" [routerLink]="['/group', item.id]">{{ item.name }}</a></b>
+            <br>
+            <i>{{ item.about }}</i>
+        </div>
+    </div>
+</div>

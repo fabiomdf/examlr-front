@@ -6,6 +6,7 @@ import { GroupNewComponent } from "./group/groupnew.component";
 import { GroupDetailComponent } from "./group/groupdetail.component";
 import { CategoryNewComponent } from "./category/categorynew.component";
 import { SimulationComponent } from "./simulation/simulation.component";
+import { GroupSearchComponent } from "./group/groupsearch.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'group/new', component: GroupNewComponent },
   { path: 'group/:id', component: GroupDetailComponent },
   { path: 'group/:id/simulation', component: SimulationComponent },
+  { path: 'search/:term', component: GroupSearchComponent }
 ];
 
 @NgModule({
