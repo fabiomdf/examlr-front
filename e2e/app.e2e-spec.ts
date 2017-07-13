@@ -1,14 +1,14 @@
-import { ExamlrFrontPage } from './app.po';
+import { MyAppPage } from './app.po';
 
-describe('examlr-front App', () => {
-  let page: ExamlrFrontPage;
+describe('my-app App', () => {
+  let page: MyAppPage;
 
   beforeEach(() => {
-    page = new ExamlrFrontPage();
+    page = new MyAppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
