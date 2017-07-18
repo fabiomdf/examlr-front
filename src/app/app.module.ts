@@ -41,7 +41,7 @@ import { SimulationComponent } from './simulation/simulation.component';
     QuestionNewComponent,
     QuestionDetailComponent,
     AnswerNewComponent,
-    SimulationComponent
+    SimulationComponent 
   ],
   imports: [
     BrowserModule,
