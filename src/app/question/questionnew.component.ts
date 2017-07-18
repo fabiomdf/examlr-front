@@ -3,14 +3,15 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Group } from "../group/group";
-import { Category } from "../category/category";
-import { CategoryService } from "../category/category.service";
-import { Question } from "./question";
-import { QuestionService } from "./question.service";
+import { Group } from '../group/group';
+import { Category } from '../category/category';
+import { CategoryService } from '../category/category.service';
+import { Question } from './question';
+import { QuestionService } from './question.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'questionnew-component',
     templateUrl: 'questionnew.component.html'
 })

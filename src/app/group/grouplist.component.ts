@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Group } from "./group";
-import { GroupService } from "./group.service";
+import { Group } from './group';
+import { GroupService } from './group.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'grouplist-component',
     templateUrl: 'grouplist.component.html'
 })

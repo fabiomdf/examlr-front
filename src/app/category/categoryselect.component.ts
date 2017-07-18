@@ -6,11 +6,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { Group } from "../group/group";
-import { Category } from "./category";
-import { CategoryService } from "./category.service";
+import { Group } from '../group/group';
+import { Category } from './category';
+import { CategoryService } from './category.service';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'categoryselect-component',
   templateUrl: './categoryselect.component.html'
 })
@@ -28,6 +29,7 @@ export class CategorySelectComponent {
 
   formatter = (x: { name: string }) => x.name;
 
+  // tslint:disable-next-line:member-ordering
   @Output() categorySelected = new EventEmitter();
 
   @Input()
@@ -70,9 +72,10 @@ export class CategorySelectComponent {
       });
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit() {
     this.categoryModel = new Category();
-    this.categoryModel.name = "";
+    this.categoryModel.name = '';
   }
 
 }

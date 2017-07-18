@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Question } from "./question";
+import { Question } from './question';
 
 @Injectable()
 export class QuestionService {
@@ -15,14 +15,14 @@ export class QuestionService {
     constructor(private http: Http) { }
 
     getQuestions(): Promise<Question[]> {
-        return this.http.get(this.url + "/Questions")
+        return this.http.get(this.url + '/Questions')
             .toPromise()
             .then(res => res.json() as Question[])
             .catch(this.handleError);
     }
 
     getQuestionsByCategoryId(categoryId: string): Promise<any[]> {
-        return this.http.get(this.url + "/Categories/" + categoryId + "/questions?filter[include]=answers")
+        return this.http.get(this.url + '/Categories/' + categoryId + '/questions?filter[include]=answers')
             .toPromise()
             .then(res => res.json() as any[])
             .catch(this.handleError);
@@ -33,11 +33,11 @@ export class QuestionService {
         return this.http.get(url)
             .toPromise()
             .then(res => {
-                var categories = res.json() as any[];
-                var result = new Array<any>();
-                for (let c of categories) {
-                    for (let q of c.questions) {
-                        var question: any = {}
+                const categories = res.json() as any[];
+                const result = new Array<any>();
+                for (const c of categories) {
+                    for (const q of c.questions) {
+                        let question: any = {};
                         question = q;
                         question.categoryName = c.name;
 
@@ -53,11 +53,11 @@ export class QuestionService {
      * Get the Question Details and the corresponding Answers using Question Id
      */
     getQAByQuestionId(questionId: string): Promise<any> {
-        let url = `${this.url}/questions?filter[include]=answers&filter[where][id]=${questionId}`;
+        const url = `${this.url}/questions?filter[include]=answers&filter[where][id]=${questionId}`;
         return this.http.get(url)
             .toPromise()
             .then(res => {
-                let result = res.json() as any;
+                const result = res.json() as any;
                 return result[0];
             })
             .catch(this.handleError);
@@ -65,15 +65,15 @@ export class QuestionService {
 
     setUpVote(questionsId: string): Promise<Question> {
         const url = `${this.url}/Questions/${questionsId}`;
-        var result = this.http.get(url)
+        const result = this.http.get(url)
             .toPromise()
             .then(res => {
                 // buscando o upVote mais atualizado
-                var question = new Question();
+                let question = new Question();
                 question = res.json() as Question;
                 // atualizando o upVote somando + 1
                 question.upVote = question.upVote + 1;
-                return this.http.patch(url, question).toPromise().then(res => res.json() as Question).catch(this.handleError);
+                return this.http.patch(url, question).toPromise().then(response => response.json() as Question).catch(this.handleError);
             })
             .catch(this.handleError);
         return result;
@@ -81,15 +81,15 @@ export class QuestionService {
 
     setDownVote(questionsId: string): Promise<Question> {
         const url = `${this.url}/Questions/${questionsId}`;
-        var result = this.http.get(url)
+        const result = this.http.get(url)
             .toPromise()
             .then(res => {
                 // buscando o downVote mais atualizado
-                var question = new Question();
+                let question = new Question();
                 question = res.json() as Question;
                 // atualizando o downVote somando + 1
                 question.downVote = question.downVote + 1;
-                return this.http.patch(url, question).toPromise().then(res => res.json() as Question).catch(this.handleError);
+                return this.http.patch(url, question).toPromise().then(response => response.json() as Question).catch(this.handleError);
             })
             .catch(this.handleError);
         return result;
@@ -97,7 +97,7 @@ export class QuestionService {
 
     newQuestion(questionText: string, answerText: string, categoryId: string): Promise<Question> {
         return this.http
-            .post(this.url + "/Questions",
+            .post(this.url + '/Questions',
             JSON.stringify({
                 questionText: questionText,
                 answerText: answerText,
@@ -122,7 +122,7 @@ export class QuestionService {
 
     private shuffleArray(_array: Array<Question>): Array<Question> {
         for (let i = _array.length; i; i--) {
-            let j = Math.floor(Math.random() * i);
+            const j = Math.floor(Math.random() * i);
             [_array[i - 1], _array[j]] = [_array[j], _array[i - 1]];
         }
         return _array;

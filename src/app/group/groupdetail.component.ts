@@ -4,16 +4,17 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
-import { Group } from "./group";
-import { GroupService } from "./group.service";
+import { Group } from './group';
+import { GroupService } from './group.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'groupdetail.component',
     templateUrl: 'groupdetail.component.html'
 })
 export class GroupDetailComponent implements OnInit {
-    
+
     group: Group;
 
     constructor(

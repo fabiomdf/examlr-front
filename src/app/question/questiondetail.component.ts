@@ -3,11 +3,12 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Question } from "./question";
-import { QuestionService } from "./question.service";
+import { Question } from './question';
+import { QuestionService } from './question.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'questiondetail-component',
     templateUrl: 'questiondetail.component.html'
 })
@@ -40,7 +41,7 @@ export class QuestionDetailComponent implements OnInit {
     }
 
     setUpVote(questionId: string): void {
-        var rtrn = new Question();
+        let rtrn = new Question();
         this.questionService.setUpVote(questionId).then(result => {
             rtrn = result;
             this.questions[this.questionIndex].upVote++;
@@ -48,7 +49,7 @@ export class QuestionDetailComponent implements OnInit {
     }
 
     setDownVote(questionId: string): void {
-        var rtrn = new Question();
+        let rtrn = new Question();
         this.questionService.setDownVote(questionId).then(result => {
             rtrn = result;
             this.questions[this.questionIndex].downVote++;

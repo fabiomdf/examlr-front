@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { GroupListComponent } from "./group/grouplist.component";
-import { GroupNewComponent } from "./group/groupnew.component";
-import { GroupDetailComponent } from "./group/groupdetail.component";
-import { CategoryNewComponent } from "./category/categorynew.component";
-import { SimulationComponent } from "./simulation/simulation.component";
-import { GroupSearchComponent } from "./group/groupsearch.component";
+import { GroupListComponent } from './group/grouplist.component';
+import { GroupNewComponent } from './group/groupnew.component';
+import { GroupDetailComponent } from './group/groupdetail.component';
+import { CategoryNewComponent } from './category/categorynew.component';
+import { SimulationComponent } from './simulation/simulation.component';
+import { GroupSearchComponent } from './group/groupsearch.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

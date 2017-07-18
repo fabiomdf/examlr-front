@@ -5,14 +5,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
-import { Group } from "../group/group";
-import { GroupService } from "../group/group.service";
-import { Question } from "../question/question";
-import { QuestionService } from "../question/question.service";
-import { Answer } from "../answer/answer";
+import { Group } from '../group/group';
+import { GroupService } from '../group/group.service';
+import { Question } from '../question/question';
+import { QuestionService } from '../question/question.service';
+import { Answer } from '../answer/answer';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'simulation-component',
     templateUrl: 'simulation.component.html'
 })
@@ -65,7 +66,8 @@ export class SimulationComponent implements OnInit {
 
     openDetailQuestion(content) {
 
-        let options: NgbModalOptions = { size: 'lg' };
+        const options: NgbModalOptions = { size: 'lg' };
+        // tslint:disable-next-line:no-unused-expression
         this.modalService.open(content, options).result;
     }
 
@@ -77,7 +79,7 @@ export class SimulationComponent implements OnInit {
 
         let i = 0;
         for (let q of this.questions) {
-            this.simulationResults[i] = (JSON.stringify(q) == JSON.stringify(this.questionsSimulate[i])) ? true : false; i++;
+            this.simulationResults[i] = (JSON.stringify(q) === JSON.stringify(this.questionsSimulate[i])) ? true : false; i++;
         }
     }
 

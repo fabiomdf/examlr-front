@@ -3,12 +3,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Group } from "../group/group";
-import { Category } from "./category";
-import { CategoryService } from "./category.service";
+import { Group } from '../group/group';
+import { Category } from './category';
+import { CategoryService } from './category.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'categorynew-component',
     templateUrl: 'categorynew.component.html'
 })
@@ -56,6 +57,6 @@ export class CategoryNewComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+
     }
 }

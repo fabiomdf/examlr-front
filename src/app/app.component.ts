@@ -13,7 +13,7 @@ export class AppComponent {
     private router: Router) { }
 
   gotoSearch(term: string): void {
-    let link = ['/search', term];
+    const link = ['/search', term];
     this.router.navigate(link);
   }
 }

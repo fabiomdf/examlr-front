@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }            from '@angular/router';
+import { Router } from '@angular/router';
 
-import { Group } from "./group";
-import { GroupService } from "./group.service";
+import { Group } from './group';
+import { GroupService } from './group.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'groupnew-component',
     templateUrl: 'groupnew.component.html'
 })
@@ -32,6 +33,6 @@ export class GroupNewComponent implements OnInit {
     }
 
     ngOnInit() {
-        
+
      }
 }

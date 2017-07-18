@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Answer } from "./answer";
+import { Answer } from './answer';
 
 @Injectable()
 export class AnswerService {
@@ -15,14 +15,14 @@ export class AnswerService {
     constructor(private http: Http) { }
 
     getAnswers(): Promise<Answer[]> {
-        return this.http.get(this.url + "/Answers")
+        return this.http.get(this.url + '/Answers')
             .toPromise()
             .then(res => res.json() as Answer[])
             .catch(this.handleError);
     }
 
     getAnswersByQuestionId(questionId: string): Promise<Answer[]> {
-        return this.http.get(this.url + "/Questions/" + questionId + "/answers")
+        return this.http.get(this.url + '/Questions/' + questionId + '/answers')
             .toPromise()
             .then(res => res.json() as Answer[])
             .catch(this.handleError);
@@ -30,7 +30,7 @@ export class AnswerService {
 
     newAnswer(optionText: string, correctAnswer: boolean, questionId: string): Promise<Answer> {
         return this.http
-            .post(this.url + "/Answers",
+            .post(this.url + '/Answers',
             JSON.stringify({
                 optionText: optionText,
                 correctAnswer: correctAnswer,

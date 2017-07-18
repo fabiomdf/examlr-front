@@ -4,14 +4,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { NgbModal, ModalDismissReasons, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 
-import { Group } from "../group/group";
-import { Category } from "../category/category";
-import { CategoryService } from "../category/category.service";
-import { Question } from "./question";
-import { QuestionService } from "./question.service";
+import { Group } from '../group/group';
+import { Category } from '../category/category';
+import { CategoryService } from '../category/category.service';
+import { Question } from './question';
+import { QuestionService } from './question.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'questionlist-component',
     templateUrl: 'questionlist.component.html'
 })
@@ -47,7 +48,7 @@ export class QuestionListComponent implements OnInit {
     }
 
     openNewQuestion(content) {
-        let options: NgbModalOptions = { size: 'lg' };
+        const options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result.then((result) => {
             this.getQuestionsByGroupId();
         }, (reason) => {
@@ -56,7 +57,7 @@ export class QuestionListComponent implements OnInit {
     }
 
     openDetailQuestion(content) {
-        let options: NgbModalOptions = { size: 'lg' };
+        const options: NgbModalOptions = { size: 'lg' };
         this.modalService.open(content, options).result.then((result) => {
             this.getQuestionsByGroupId();
         }, (reason) => {

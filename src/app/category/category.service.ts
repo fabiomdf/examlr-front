@@ -4,7 +4,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Category } from "./category";
+import { Category } from './category';
 
 @Injectable()
 export class CategoryService {
@@ -15,14 +15,14 @@ export class CategoryService {
     constructor(private http: Http) { }
 
     getCategories(): Promise<Category[]> {
-        return this.http.get(this.url + "/Categories")
+        return this.http.get(this.url + '/Categories')
             .toPromise()
             .then(res => res.json() as Category[])
             .catch(this.handleError);
     }
 
     getCategoriesByGroupId(groupId: string): Promise<Category[]> {
-        return this.http.get(this.url + "/Groups/" + groupId + "/categories")
+        return this.http.get(this.url + '/Groups/' + groupId + '/categories')
             .toPromise()
             .then(res => res.json() as Category[])
             .catch(this.handleError);
@@ -30,7 +30,7 @@ export class CategoryService {
 
     newCategory(name: string, groupId: string): Promise<Category> {
         return this.http
-            .post(this.url + "/Categories",
+            .post(this.url + '/Categories',
             JSON.stringify({
                 name: name.substring(0, 128),
                 groupId: groupId

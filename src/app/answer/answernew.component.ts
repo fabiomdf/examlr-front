@@ -3,12 +3,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Question } from "../question/question";
-import { Answer } from "./answer";
-import { AnswerService } from "./answer.service";
+import { Question } from '../question/question';
+import { Answer } from './answer';
+import { AnswerService } from './answer.service';
 
 @Component({
     moduleId: module.id,
+    // tslint:disable-next-line:component-selector
     selector: 'answernew-component',
     templateUrl: 'answernew.component.html'
 })
