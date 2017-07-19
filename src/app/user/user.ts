@@ -3,5 +3,12 @@ export class User {
     username: string;
     password: string;
     email: string;
-    access_key: string;
+    emailVerified: boolean;
+}
+
+export class AccessKey {
+  id: string;
+  ttl: number;
+  created: Date;
+  userId: string;
 }

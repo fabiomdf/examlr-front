@@ -38,6 +38,7 @@ export class QuestionNewComponent implements OnInit {
     ) { }
 
     newQuestion(questionText: string, answerText: string, category: Category): void {
+
         questionText = questionText.trim();
         answerText = answerText.trim();
 
@@ -47,6 +48,7 @@ export class QuestionNewComponent implements OnInit {
             .then(result => {
                 this.question = result;
             });
+
     }
 
     getCategoriesByGroup(): void {

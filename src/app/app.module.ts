@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { UserNewComponent } from './user/usernew.component';
+import { UserService } from './user/user.service';
+
 import { GroupListComponent } from './group/grouplist.component';
 import { GroupNewComponent } from './group/groupnew.component';
 import { GroupDetailComponent } from './group/groupdetail.component';
@@ -41,7 +44,8 @@ import { SimulationComponent } from './simulation/simulation.component';
     QuestionNewComponent,
     QuestionDetailComponent,
     AnswerNewComponent,
-    SimulationComponent 
+    SimulationComponent,
+    UserNewComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +58,8 @@ import { SimulationComponent } from './simulation/simulation.component';
     GroupService,
     CategoryService,
     QuestionService,
-    AnswerService
+    AnswerService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })
