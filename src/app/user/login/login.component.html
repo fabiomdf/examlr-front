@@ -10,7 +10,8 @@
     <div class="form-group row">
       <label for="password" class="col-sm-2 col-form-label">Password</label>
       <div class="col-sm-10">
-        <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password" placeholder="password" required>
+        <input [(ngModel)]="user.password" type="password" class="form-control" id="password" name="password" placeholder="password"
+          required>
       </div>
     </div>
     <div class="form-group row">
@@ -19,4 +20,16 @@
       </div>
     </div>
   </form>
+  <div *ngIf="loginSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Yeah!</strong> Now you're ready to user the examlr.
+  </div>
+  <div *ngIf="loginError" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>Nooo!</strong> Something wrong happened trying to log in.
+  </div>
 </div>

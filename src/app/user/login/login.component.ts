@@ -12,6 +12,8 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   user: User = new User();
+  loginSuccess = false;
+  loginError = false;
 
   constructor(
     private userServive: UserService,
@@ -27,9 +29,15 @@ export class LoginComponent implements OnInit {
       this.authService.setCurrentUser(res.user);
       this.authService.setAccessTokenId(res.id);
 
+      this.loginSuccess = true;
+      this.loginError = false;
+
     }, err => {
 
-      console.log('ERRO', err);
+      this.loginSuccess = false;
+      this.loginError = true;
+
+      // console.log('ERRO', err);
 
     });
   }
