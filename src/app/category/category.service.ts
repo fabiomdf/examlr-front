@@ -5,14 +5,21 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Category } from './category';
+import { AuthService } from '../user/auth.service';
 
 @Injectable()
 export class CategoryService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getAccessTokenId()
+    });
     private url = 'http://localhost:3000/api';
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http,
+        private authService: AuthService
+    ) { }
 
     getCategories(): Promise<Category[]> {
         return this.http.get(this.url + '/Categories')

@@ -5,14 +5,21 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 import { Question } from './question';
+import { AuthService } from '../user/auth.service';
 
 @Injectable()
 export class QuestionService {
 
-    private headers = new Headers({ 'Content-Type': 'application/json' });
+    private headers = new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': this.authService.getAccessTokenId()
+    });
     private url = 'http://localhost:3000/api';
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http,
+        private authService: AuthService
+    ) { }
 
     getQuestions(): Promise<Question[]> {
         return this.http.get(this.url + '/Questions')
@@ -73,7 +80,10 @@ export class QuestionService {
                 question = res.json() as Question;
                 // atualizando o upVote somando + 1
                 question.upVote = question.upVote + 1;
-                return this.http.patch(url, question).toPromise().then(response => response.json() as Question).catch(this.handleError);
+                return this.http.patch(url, question, { headers: this.headers })
+                    .toPromise()
+                    .then(response => response.json() as Question)
+                    .catch(this.handleError);
             })
             .catch(this.handleError);
         return result;
@@ -89,7 +99,10 @@ export class QuestionService {
                 question = res.json() as Question;
                 // atualizando o downVote somando + 1
                 question.downVote = question.downVote + 1;
-                return this.http.patch(url, question).toPromise().then(response => response.json() as Question).catch(this.handleError);
+                return this.http.patch(url, question, { headers: this.headers })
+                    .toPromise()
+                    .then(response => response.json() as Question)
+                    .catch(this.handleError);
             })
             .catch(this.handleError);
         return result;
