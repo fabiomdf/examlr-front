@@ -11,7 +11,8 @@ import { CategoryService } from './category.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'categorynew-component',
-    templateUrl: 'categorynew.component.html'
+    templateUrl: 'categorynew.component.html',
+    providers: [CategoryService]
 })
 export class CategoryNewComponent implements OnInit {
 

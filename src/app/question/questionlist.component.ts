@@ -14,7 +14,8 @@ import { QuestionService } from './question.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'questionlist-component',
-    templateUrl: 'questionlist.component.html'
+    templateUrl: 'questionlist.component.html',
+    providers: [QuestionService, CategoryService]
 })
 export class QuestionListComponent implements OnInit {
 

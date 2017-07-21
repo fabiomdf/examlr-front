@@ -10,7 +10,8 @@ import { QuestionService } from './question.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'questiondetail-component',
-    templateUrl: 'questiondetail.component.html'
+    templateUrl: 'questiondetail.component.html',
+    providers: [QuestionService]
 })
 export class QuestionDetailComponent implements OnInit {
 

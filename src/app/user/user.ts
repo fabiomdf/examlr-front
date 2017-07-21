@@ -1,9 +1,11 @@
 export class User {
-    id: string;
-    username: string;
-    password: string;
-    email: string;
-    emailVerified: boolean;
+    constructor(
+      public id?: string,
+      public username?: string,
+      public password?: string,
+      public email?: string,
+      public emailVerified?: boolean
+    ) { }
 }
 
 export class AccessKey {

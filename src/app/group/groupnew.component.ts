@@ -8,7 +8,8 @@ import { GroupService } from './group.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'groupnew-component',
-    templateUrl: 'groupnew.component.html'
+    templateUrl: 'groupnew.component.html',
+    providers: [GroupService]
 })
 export class GroupNewComponent implements OnInit {
 

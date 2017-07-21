@@ -3,34 +3,39 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouterModule, Routes } from '@angular/router';
+/** componente principal da aplicacao */
 import { AppComponent } from './app.component';
-
-import { AppRoutingModule } from './app-routing.module';
-
-import { UserNewComponent } from './user/usernew.component';
-import { UserService } from './user/user.service';
-
+/** compoenentes de servico compartilhado */
+import { AuthService } from './user/auth.service';
+/** componentes que serao acessados na aplicacao */
+import { LoginComponent } from './user/login/login.component';
+import { NewuserComponent } from './user/newuser/newuser.component';
 import { GroupListComponent } from './group/grouplist.component';
 import { GroupNewComponent } from './group/groupnew.component';
 import { GroupDetailComponent } from './group/groupdetail.component';
 import { GroupSearchComponent } from './group/groupsearch.component';
-import { GroupService } from './group/group.service';
-
 import { CategoryNewComponent } from './category/categorynew.component';
 import { CategorySelectComponent } from './category/categoryselect.component';
-import { CategoryService } from './category/category.service';
-
 import { QuestionListComponent } from './question/questionlist.component';
 import { QuestionNewComponent } from './question/questionnew.component';
 import { QuestionDetailComponent } from './question/questiondetail.component';
-import { QuestionService } from './question/question.service';
-
 import { AnswerNewComponent } from './answer/answernew.component';
-import { AnswerService } from './answer/answer.service';
-
 import { SimulationComponent } from './simulation/simulation.component';
 
+/** rotas da aplicacao */
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: GroupListComponent },
+  { path: 'group/new', component: GroupNewComponent },
+  { path: 'group/:id', component: GroupDetailComponent },
+  { path: 'group/:id/simulation', component: SimulationComponent },
+  { path: 'search/:term', component: GroupSearchComponent },
+  { path: 'user/new', component: NewuserComponent },
+  { path: 'user/login', component: LoginComponent }
+];
+
+/** modulos ques estao sendo utilizados na aplicacao */
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,22 +50,18 @@ import { SimulationComponent } from './simulation/simulation.component';
     QuestionDetailComponent,
     AnswerNewComponent,
     SimulationComponent,
-    UserNewComponent
+    LoginComponent,
+    NewuserComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     NgbModule.forRoot(),
-    AppRoutingModule
+    RouterModule.forRoot(routes)
   ],
-  providers: [
-    GroupService,
-    CategoryService,
-    QuestionService,
-    AnswerService,
-    UserService
-  ],
+  providers: [AuthService],
+  exports: [RouterModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

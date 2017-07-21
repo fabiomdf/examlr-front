@@ -15,7 +15,8 @@ import { Answer } from '../answer/answer';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'simulation-component',
-    templateUrl: 'simulation.component.html'
+    templateUrl: 'simulation.component.html',
+    providers: [GroupService, QuestionService]
 })
 export class SimulationComponent implements OnInit {
 

@@ -13,7 +13,8 @@ import { CategoryService } from './category.service';
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'categoryselect-component',
-  templateUrl: './categoryselect.component.html'
+  templateUrl: './categoryselect.component.html',
+  providers: [CategoryService]
 })
 export class CategorySelectComponent {
   group: Group;

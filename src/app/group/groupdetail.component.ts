@@ -11,7 +11,8 @@ import { GroupService } from './group.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'groupdetail.component',
-    templateUrl: 'groupdetail.component.html'
+    templateUrl: 'groupdetail.component.html',
+    providers: [GroupService]
 })
 export class GroupDetailComponent implements OnInit {
 

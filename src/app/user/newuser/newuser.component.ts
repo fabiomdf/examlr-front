@@ -3,18 +3,18 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { User } from './user';
-import { UserService } from './user.service';
+import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component({
-    moduleId: module.id,
-    selector: 'app-usernew-component',
-    templateUrl: 'usernew.component.html',
-    providers: [UserService]
+  selector: 'app-newuser',
+  templateUrl: './newuser.component.html',
+  styleUrls: ['./newuser.component.css'],
+  providers: [UserService]
 })
-export class UserNewComponent implements OnInit {
+export class NewuserComponent implements OnInit {
 
-    user: User;
+    user: User = new User();
 
     constructor(
         private userService: UserService,
@@ -22,17 +22,14 @@ export class UserNewComponent implements OnInit {
         private location: Location
     ) { }
 
-    newUser(username: string, email: string, password: string) {
-
-        this.user = new User();
-
-        this.user.username = username.trim();
-        this.user.email = email.trim();
-        this.user.password = password.trim();
+    newUser() {
+        this.user.username = this.user.username.trim();
+        this.user.email = this.user.email.trim();
+        this.user.password = this.user.password.trim();
 
         console.log(this.user);
 
-        if (!username || !email || !password) { return; }
+        if (!this.user.username || !this.user.email || !this.user.password) { return; }
 
         this.userService.newUser(this.user).subscribe(res => {
             console.log('sucesso:' + res.id);
@@ -42,4 +39,5 @@ export class UserNewComponent implements OnInit {
     }
 
     ngOnInit() { }
+
 }

@@ -11,7 +11,8 @@ import { AnswerService } from './answer.service';
     moduleId: module.id,
     // tslint:disable-next-line:component-selector
     selector: 'answernew-component',
-    templateUrl: 'answernew.component.html'
+    templateUrl: 'answernew.component.html',
+    providers: [AnswerService]
 })
 
 export class AnswerNewComponent implements OnInit {
