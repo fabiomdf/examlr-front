@@ -1,20 +1,24 @@
-<div class="jumbotron">
+<div class="py-5">
     <div class="container">
-        <h1 class="display-5"> Results </h1>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <a href="javascript:void(0);" [routerLink]="['/group/new']">Create a new group</a>
+        <div class="row">
+            <div class="col-md-10">
+                <h1 class="">searching: <i *ngIf="term">{{term}}</i></h1>
+            </div>
+            <div class="col-md-2 text-center">
+                <a class="btn btn-success" href="javascript:void(0);" [routerLink]="['/group/new']">create a group</a>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12" *ngFor="let item of groups">
-            <hr>
-            <b><a href="javascript:void(0);" [routerLink]="['/group', item.id]">{{ item.name }}</a></b>
-            <br>
-            <i>{{ item.about }}</i>
+        <div class="row p-1" *ngFor="let item of groups">
+            <div class="col-md-12">
+                <div class="card">
+                    <a href="javascript:void(0);" [routerLink]="['/group', item.id]">
+                        <div class="card-block">
+                            <h4>{{ item.name }}</h4>
+                            <p>{{ item.about }}</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -30,6 +30,11 @@ export class GroupNewComponent implements OnInit {
             .then(result => {
                 this.group = result;
                 this.router.navigate([`group/${this.group.id}`]);
+            })
+            .catch(err => {
+                if (err.status === 401) {
+                    this.router.navigate([`user/login`]);
+                }
             });
     }
 

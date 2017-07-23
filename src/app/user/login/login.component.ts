@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private userServive: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private app: AppComponent
   ) { }
 
   ngOnInit() {
@@ -31,6 +33,8 @@ export class LoginComponent implements OnInit {
 
       this.loginSuccess = true;
       this.loginError = false;
+
+      this.app.reloadUser();
 
     }, err => {
 

@@ -1,10 +1,19 @@
-<div class="jumbotron">
+<div class="py-5 section text-center bg-primary text-gray-dark">
     <div class="container">
-        <h1 class="display-5"> {{group.name}} </h1>
-        <p>{{group.about}}</p>
-        <button class="btn btn-lg btn-outline-success" routerLink="/group/{{group.id}}/simulation"> <i class="fa fa-play" aria-hidden="true"></i> Start Simulation</button>
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white">{{group.name}}</h1>
+                <p class="lead">{{group.about}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a class="btn btn-secondary" href="javascript:void(0);" routerLink="/group/{{group.id}}/simulation"><i class="fa fa-play fa-fw"></i>Start Simulation</a>
+            </div>
+        </div>
     </div>
 </div>
+<br>
 <div class="container">
     <div class="row">
         <div class="col-md-12" *ngIf="group.id">

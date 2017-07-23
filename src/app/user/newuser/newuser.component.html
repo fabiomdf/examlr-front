@@ -1,27 +1,41 @@
-<div class="container">
-    <div class="row"><br></div>
+<div class="py-5">
+  <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h1>New User</h1>
-        </div>
-        <div class="col-md-12">
-            <form (ngSubmit)="newUser()">
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control form-control" placeholder="email" [(ngModel)]="user.email" name="email">
-                </div>
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" class="form-control form-control" placeholder="username" [(ngModel)]="user.username" name="username">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control form-control" placeholder="password" [(ngModel)]="user.password" name="password">
-                </div>
-                <div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
+      <div class="col-md-12">
+        <h1 class="">new user</h1>
+      </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form class=""(ngSubmit)="newUser()">
+          <div class="form-group"> 
+            <label>Email address</label>
+            <input type="email" class="form-control" placeholder="email" [(ngModel)]="user.email" name="email" required>
+          </div>
+          <div class="form-group"> 
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="username" [(ngModel)]="user.username" name="username" required>
+          </div>
+          <div class="form-group"> 
+            <label>Password</label>
+            <input type="password" class="form-control" placeholder="password" [(ngModel)]="user.password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">create</button>
+        </form>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div *ngIf="alertSuccess" class="alert alert-success" role="alert"> 
+          <strong>Well done!</strong> Be ready to use the examlr <a href="javascript:void(0)" routerLink="/user/login">logging in here</a>!
+        </div>
+        <div *ngIf="alertError" class="alert alert-danger" role="alert"> 
+          <strong>Oh snap!</strong> Something wrong happened trying to create an account. Check email and username;
+        </div>
+        <!--div class="alert alert-info" role="alert"> <strong>Heads up!</strong> This alert needs your attention, but it's not super important. </div-->
+        <!--div class="alert alert-warning" role="alert"> <strong>Warning!</strong> Better check yourself, you're not looking too good. </div-->
+      </div>
+    </div>
+  </div>
 </div>

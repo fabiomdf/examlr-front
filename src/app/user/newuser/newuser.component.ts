@@ -13,6 +13,8 @@ import { UserService } from '../user.service';
   providers: [UserService]
 })
 export class NewuserComponent implements OnInit {
+    alertError: boolean;
+    alertSuccess: boolean;
 
     user: User = new User();
 
@@ -32,9 +34,13 @@ export class NewuserComponent implements OnInit {
         if (!this.user.username || !this.user.email || !this.user.password) { return; }
 
         this.userService.newUser(this.user).subscribe(res => {
-            console.log('sucesso:' + res.id);
+            this.alertSuccess = true;
+            this.alertError = false;
+            // console.log('sucesso:' + res.id);
         }, err => {
-            console.log('erro:' + err);
+            this.alertSuccess = false;
+            this.alertError = true;
+            // console.log('erro:' + err);
         });
     }
 
